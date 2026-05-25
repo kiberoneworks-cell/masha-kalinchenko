@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Маша и Оля — минимализм</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+            color: #1a1a1a;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+        }
+
+        header {
+            border-bottom: 2px solid #0f0f0f;
+            padding-bottom: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .supertitle {
+            font-size: 0.85rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: #4f4f4f;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: 3.6rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: #0f0f0f;
+        }
+
+        .header-line {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .header-line .sharp-rect {
+            width: 3.2rem;
+            height: 0.7rem;
+            background-color: #0f0f0f;
+        }
+
+        .header-line span {
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #2c2c2c;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            position: relative;
+        }
+
+        .two-columns::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1.5px;
+            background-color: #0f0f0f;
+            transform: translateX(-50%);
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+            padding: 0.8rem 0;
+        }
+
+        .column-left {
+            padding-right: 1.8rem;
+        }
+
+        .column-right {
+            padding-left: 1.8rem;
+        }
+
+        .role-tag {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #5e5e5e;
+            border-left: 3px solid #0f0f0f;
+            padding-left: 0.8rem;
+            margin-bottom: 0.2rem;
+            font-weight: 400;
+        }
+
+        .name-block {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .name-large {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1;
+            color: #0f0f0f;
+        }
+
+        .age-badge {
+            display: inline-block;
+            border: 1.5px solid #0f0f0f;
+            padding: 0.25rem 1rem;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            align-self: flex-start;
+            margin-top: 0.2rem;
+            background-color: #ffffff;
+        }
+
+        .description {
+            font-size: 1.05rem;
+            color: #2b2b2b;
+            border-top: 1px solid #c0c0c0;
+            padding-top: 1.2rem;
+            margin-top: 0.3rem;
+        }
+
+        .highlight-box {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            padding: 1.2rem 1.4rem;
+            margin-top: 0.8rem;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            line-height: 1.5;
+        }
+
+        .highlight-box p {
+            margin: 0;
+        }
+
+        .flower-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-top: 0.6rem;
+            font-style: italic;
+            color: #2b2b2b;
+        }
+
+        .flower-note .sharp-icon {
+            font-style: normal;
+            font-size: 1.3rem;
+            line-height: 1;
+            color: #0f0f0f;
+        }
+
+        .union-block {
+            border-top: 2px solid #0f0f0f;
+            border-bottom: 2px solid #0f0f0f;
+            padding: 2.2rem 0;
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.8rem;
+        }
+
+        .union-block .big-quote {
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            max-width: 700px;
+            color: #0f0f0f;
+        }
+
+        .union-block .author-line {
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #4f4f4f;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .author-line::before,
+        .author-line::after {
+            content: "";
+            display: block;
+            width: 2rem;
+            height: 1px;
+            background-color: #4f4f4f;
+        }
+
+        footer {
+            margin-top: 1.8rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #7a7a7a;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 2rem 1.2rem;
+                gap: 3.5rem;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 2.8rem;
+            }
+
+            .two-columns::before {
+                display: none;
+            }
+
+            .column-left,
+            .column-right {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            h1 {
+                font-size: 2.6rem;
+            }
+
+            .name-large {
+                font-size: 2.3rem;
+            }
+
+            .union-block .big-quote {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="supertitle">Семейная история</div>
+            <h1>Маша &amp; Оля</h1>
+            <div class="header-line">
+                <div class="sharp-rect"></div>
+                <span>дочь и мама</span>
+            </div>
+        </header>
+
+        <section class="two-columns">
+            <div class="column column-left">
+                <div class="role-tag">ребёнок</div>
+                <div class="name-block">
+                    <div class="name-large">Маша</div>
+                    <div class="age-badge">10 лет</div>
+                </div>
+                <div class="description">
+                    Любознательная, смелая, с воображением больше Вселенной.
+                </div>
+                <div class="highlight-box">
+                    <p>«стану великим человеком»</p>
+                </div>
+            </div>
+
+            <div class="column column-right">
+                <div class="role-tag">родитель</div>
+                <div class="name-block">
+                    <div class="name-large">Оля</div>
+                    <div class="age-badge">37 лет</div>
+                </div>
+                <div class="description" style="margin-top: 0.8rem;">
+                    Флорист с десятилетним стажем. Оля верит, что каждый цветок рассказывает
+                    свою историю, а букет — это письмо без слов. Её мастерская пахнет пионами,
+                    свежей зеленью и немного — утренним кофе.
+                </div>
+                <div class="flower-note">
+                    <span class="sharp-icon">&#10045;</span>
+                    <span>Любимые цветы: пионы, эвкалипт, дикая морковь и чёрные тюльпаны.</span>
+                </div>
+                <div class="highlight-box" style="margin-top: 1.2rem;">
+                    <p>Работа: флорист<br>Страсть: композиции с сухоцветами и минималистичные букеты.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="union-block">
+            <div class="big-quote">
+                «Дом там, где мама ставит цветы в вазу,<br> а дочь рисует их портреты.»
+            </div>
+            <div class="author-line">Маша &amp; Оля</div>
+        </div>
+
+        <footer>
+            <span>минимализм · острые углы · белое &amp; чёрное</span>
+        </footer>
+    </div>
+</body>
+</html>
